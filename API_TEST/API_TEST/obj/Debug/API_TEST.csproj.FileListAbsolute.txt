@@ -1,0 +1,9 @@
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\API_TEST.exe.config
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\API_TEST.exe
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\API_TEST.pdb
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.csprojResolveAssemblyReference.cache
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.csproj.CoreCompileInputs.cache
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.exe
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.pdb
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.xml

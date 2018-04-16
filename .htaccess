@@ -1,0 +1,8 @@
+RewriteEngine On
+
+RewriteRule ^(|/)$ index.php?url=$1 [QSA]
+RewriteRule ^([a-zA-Z0-9_-]+)(|/)$ index.php?url=$1 [QSA]
+
+
+#RewriteRule ^.*$ index.php [QSA,L]
+#RewriteRule ^([^/]+)/? index.php? [L, QSA]
