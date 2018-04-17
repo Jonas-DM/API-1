@@ -66,5 +66,9 @@ $action = new Action();
 //         break;
 // }
 
-echo json_encode($_POST);
+$val = json_decode($_POST["velden"]);
+
+echo $val->naam;
+
+// echo json_encode($_POST);
 ?>

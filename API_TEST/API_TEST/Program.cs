@@ -56,20 +56,40 @@ namespace API_TEST
 
         static async Task Run()
         {
-            object val = new Dictionary<Object, Object>()
-            {
-                {"api" ,"8e6c7b47e63f664c7c66d84fcf0588202d37c3939e9fd65bf7ad6d9df52d4c188bd9c745" },
-                {"velden", new Dictionary<string , string>()
-                    {
-                        {"naam", "Pita" }
-                    }
-                }
-            };
+            //var val = new Dictionary<Object, Object>()
+            //{
+            //    {"params", new Dictionary<Object, Object>()
+            //        {
+            //            {"api" ,"8e6c7b47e63f664c7c66d84fcf0588202d37c3939e9fd65bf7ad6d9df52d4c188bd9c745" },
+            //            {"velden", new Dictionary<string , string>()
+            //                {
+            //                    {"naam", "Pita" }
+            //                }
+            //            }
+            //        }
+            //    }
+            //};
+
+            //var val = new Dictionary<string, string>()
+            //{
+            //    {"naam", "qsdlgk"   }
+            //};
 
             //Console.WriteLine(JsonConvert.SerializeObject(values, Formatting.Indented));
 
-            var json = JsonConvert.SerializeObject(val, Formatting.Indented);
-            var content = new StringContent(json);
+            //var json = JsonConvert.SerializeObject(val);
+            ////Console.WriteLine(json);
+
+            //var content = new StringContent(json, UnicodeEncoding.UTF8, "application/json");
+            ////var content = new FormUrlEncodedContent(json);
+
+            //var response = await client.PostAsync("http://localhost/api/broodje", content);
+            //var resp = response.Content.ReadAsStringAsync().Result;
+
+
+            //Console.WriteLine(resp);
+            //var content = new StringContent(json, Encoding.UTF8);
+
             //var values = new Dictionary<string, string>()
             //{
             //    {"api_key" , "8e6c7b47e63f664c7c66d84fcf0588202d37c3939e9fd65bf7ad6d9df52d4c188bd9c745" },
@@ -83,16 +103,34 @@ namespace API_TEST
 
             //var content = new FormUrlEncodedContent(values);
 
-            var response = await client.PostAsync("http://localhost/api/broodje", content);
-            var rep = response.Content.ReadAsStringAsync();
+            //var response = await client.PostAsync("http://localhost/api/broodje", content);
+            //Console.WriteLine(content.ReadAsStringAsync());
+            //var rep = response.Content.ReadAsStringAsync();
             //.WriteLine(JsonConvert.DeserializeObject<Dictionary<string, string>>(await response.Content.ReadAsStringAsync()));
             //var responseString = await response.Content.ReadAsStringAsync();
             //var resp = JsonConvert.DeserializeObject<Dictionary<string, string>>(responseString);
-
+            // Console.WriteLine(rep.Result);
             //if (resp["status"] == "400")
             //{
             //    Console.Write("Oei");
             //}
+
+            var test = new Dictionary<string, string>()
+            {
+                {"naam", "bakboux" }
+            };
+
+            FormUrlEncodedContent content = new FormUrlEncodedContent(new[]
+            {
+                new KeyValuePair<string, string>("action", "POST"),
+                new KeyValuePair<string, string>("api_key", "8e6c7b47e63f664c7c66d84fcf0588202d37c3939e9fd65bf7ad6d9df52d4c188bd9c745"),
+                new KeyValuePair<string, string>("velden", JsonConvert.SerializeObject(test))
+            });
+
+            var response = await client.PostAsync("http://localhost/api/broodje", content);
+
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+
         }
     }
 
