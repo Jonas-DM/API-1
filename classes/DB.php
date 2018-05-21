@@ -12,7 +12,8 @@ class DB{
             $query,
             $result,
             $error = false,
-            $count = 0;
+            $count = 0,
+            $last_id;
 
 
     //return current pdo instance
@@ -69,13 +70,14 @@ class DB{
             if($this->query->execute()){
                 $this->results = $this->query->fetchAll(\PDO::FETCH_OBJ); //obejct uit database halen
                 $this->count = $this->query->rowCount(); //aantal rijen
+                $this->last_id = $this->pdo->lastInsertId();
             }
             else{ //check for errors
                 if(DEBUG == false){
                     error_log($this->pdo->errorInfo(), 0);
                 }
                 //NOTE: log this and don't dump it
-                var_dump($this->pdo->errorInfo());
+                //var_dump($this->pdo->errorInfo());
                 //var_dump(PDOStatement::errorInfo());
                 $this->error = true;
             }
@@ -96,8 +98,47 @@ class DB{
      *              2. de operator (=, > ,< , ...)
      *              3. waarde die moet voldaan zijn
      */
-    public function action($action , $table, $where){
-        if(count($where) === 3){ //check als array niet meer of minder dan 3 waarden telt
+    public function action($action , $table, $where = null){
+        if($where == null){
+            $sql = "{$action} FROM {$table}";
+            if(!$this->query($sql, array())->error()){
+                return $this;
+            }
+        }
+
+        if(is_array($where[0])){
+            $sql = "{$action} FROM {$table} WHERE ";
+            $operators = array("=", '>' ,"<", "<=", ">=", "LIKE");
+            
+            $count = 1;
+
+            $values = array();
+            foreach($where as $get){
+
+                $field = $get[0];
+                $operator = $get[1];
+                $value = $get[2];
+
+                if(in_array($operator, $operators)){
+                    if($count > 1){
+                        $sql .= "AND {$field} {$operator} ?";
+                        continue;
+                    }
+
+                    $sql .= "{$field} {$operator} ?";
+
+                    \array_push($values, $value);
+                }
+                else{
+                    return false;
+                }
+            }
+
+            if(!$this->query($sql, $values)->error()){
+                return $this;
+            }
+        }
+        else if(count($where) === 3){ //check als array niet meer of minder dan 3 waarden telt
             $operators = array("=", '>' ,"<", "<=", ">=", "LIKE");
             $field = $where[0];
             $operator = $where[1];
@@ -109,12 +150,6 @@ class DB{
                 if(!$this->query($sql, array($value))->error()){
                     return $this;
                 }
-            }
-        }
-        else{ // telt meer of minder dan 3 waarden, dus vragen we de hele tabel terug
-            $sql = "{$action} FROM {$table}";
-            if(!$this->query($sql, array())){
-                return $this;
             }
         }
         return false;
@@ -131,7 +166,7 @@ class DB{
      *        - operator
      *        - waarde waaraan moet voldaan worden
      */
-    public function get($action, $table, $geg = array()){
+    public function get($action, $table, $geg = null){
         return $this->action($action, $table, $geg);
     }
 
@@ -227,4 +262,7 @@ class DB{
         return $this->results[0];
     }
 
+    public function getLastId(){
+        return $this->last_id;
+    }
 }

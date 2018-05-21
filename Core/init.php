@@ -2,20 +2,20 @@
 
 //Variabelen die globaal te gebruiken zijn
 if(!defined('SITE_PATH')){
-    define('SITE_PATH', $_SERVER["DOCUMENT_ROOT"] . "/api/");
-    define('SITE_URL', "http://localhost/api/");
+    // define('SITE_PATH', $_SERVER["DOCUMENT_ROOT"] . "/api/");
+    // define('SITE_URL', "http://localhost/api/");
     
     //allow errors to show
-    define('DEBUG', true);
+    define('DEBUG', false);
 }
 
 //globale config voor de applicatie
 $GLOBALS["config"] = array(
     "mysql" => array(
-        "host" => "localhost",
-        "database" => "buurtslagers_app",
-        "wachtwoord" => "",
-        "user" => "root"
+        "host" => "ID196183_api.db.webhosting.be",
+        "database" => "ID196183_api",
+        "wachtwoord" => "TOAIM2020",
+        "user" => "ID196183_api"
     )
 );
 

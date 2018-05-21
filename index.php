@@ -66,9 +66,43 @@ $action = new Action();
 //         break;
 // }
 
-$val = json_decode($_POST["velden"]);
+$action_type = $_POST["action"];
 
-echo $val->naam;
+if(!isset($_POST["api_key"])){
+    echo json_encode(array("status" => "404", "message" => "Geen API key gevonden."));
+    return;
+}
 
+if(!$action->ValidKey($_POST["api_key"])){
+    echo json_encode(array("status" => "404", "message" => "API key is niet gelden of is niet meer actief."));
+    return;
+}
+
+if($_GET["url"] == "order"){
+    switch($action_type){
+        case "GET":
+            $action->GetOrders($_POST);
+            break;
+        case "POST":
+            $action->PostOrder($_POST);
+            break;
+    }
+}
+else{
+    switch($action_type){
+        case "GET":
+            $action->Get($_POST);
+            break;
+        case "PUT":
+            $action->Put($_POST);
+            break;
+        case "DELETE":
+            $action->Delete($_POST);
+            break;
+        case "POST":
+            $action->Post($_POST);
+            break;
+    }
+}
 // echo json_encode($_POST);
 ?>

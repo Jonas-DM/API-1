@@ -7,3 +7,12 @@ C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.exe
 C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\obj\Debug\API_TEST.pdb
 C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Florian\Documents\Projects\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.xml
+D:\xampp\htdocs\API\API_TEST\API_TEST\bin\Debug\API_TEST.exe.config
+D:\xampp\htdocs\API\API_TEST\API_TEST\bin\Debug\API_TEST.exe
+D:\xampp\htdocs\API\API_TEST\API_TEST\bin\Debug\API_TEST.pdb
+D:\xampp\htdocs\API\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.dll
+D:\xampp\htdocs\API\API_TEST\API_TEST\bin\Debug\Newtonsoft.Json.xml
+D:\xampp\htdocs\API\API_TEST\API_TEST\obj\Debug\API_TEST.csprojResolveAssemblyReference.cache
+D:\xampp\htdocs\API\API_TEST\API_TEST\obj\Debug\API_TEST.csproj.CoreCompileInputs.cache
+D:\xampp\htdocs\API\API_TEST\API_TEST\obj\Debug\API_TEST.exe
+D:\xampp\htdocs\API\API_TEST\API_TEST\obj\Debug\API_TEST.pdb
